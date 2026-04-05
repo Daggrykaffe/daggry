@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+import MenuItem from '../components/MenuItem.astro';
+import MenuSection from '../components/MenuSection.astro';
+---
+
+<Layout title="daggry | bageri & kaffebar i Lyngby">
+	<main class="menu-container">
+		<header class="header">
+			<h1 class="page-title">menu</h1>
+			<div class="logo-container">
+				<Logo class="logo-svg" />
+			</div>
+		</header>
+
+		<div class="menu-content">
+			<MenuSection title="kaffe">
+				<MenuItem name="espresso" price="28 kr" />
+				<MenuItem name="filter kaffe" price="32 kr" />
+				<MenuItem 
+					name="v60 håndbryg" 
+					description="forhør i baren for pris, bønne, løbetid og opskrift" 
+				/>
+				<MenuItem name="cortado" price="36 kr" />
+				<MenuItem name="flat white" price="42 kr" />
+				<MenuItem name="cappuccino" price="46 kr" />
+				<MenuItem name="latte" price="48 kr" />
+				<MenuItem 
+					name="iskaffe" 
+					price="48 kr" 
+					description="vælg mellem iced latte, iced americano, espresso tonic og coldbrew" 
+				/>
+			</MenuSection>
+
+			<MenuSection title="matcha">
+				<MenuItem 
+					name="matcha" 
+					price="48 kr" 
+					description="latte eller iced\nvarianter m. basilikum, honning og pistacie" 
+				/>
+			</MenuSection>
+
+			<MenuSection title="bagværk">
+				<MenuItem 
+					name="surdejsbolle m. krystalost og pisket smør med citronskal" 
+					price="39 kr" 
+					description="tilkøb rødt og sort peber + 3 kr" 
+				/>
+				<MenuItem name="surdejsbolle m. pisket smør med citronskal" price="28 kr" />
+				<MenuItem name="croissant" price="32 kr" />
+				<p class="section-note">for yderligere bagværk forhør i baren</p>
+			</MenuSection>
+
+			<MenuSection title="kolde drikkevarer" subtitle="alt juice og saft er økologisk">
+				<MenuItem name="sort citron lemonade" price="35 kr" />
+				<MenuItem name="æblemost" price="35 kr" />
+				<MenuItem name="hyldeblomst" price="35 kr" />
+				<MenuItem name="rabarberjuice" price="35 kr" />
+				<MenuItem name="rødbedejuice" price="35 kr" />
+			</MenuSection>
+
+			<MenuSection title="te">
+				<p class="section-note">alt vores te er som udgangspunkt løst. Forhør i baren omkring udvalg</p>
+			</MenuSection>
+		</div>
+		
+		<footer class="footer">
+			<div class="footer-logo">
+				<Logo class="logo-svg" />
+			</div>
+		</footer>
+	</main>
+</Layout>
+
+<style>
+	.menu-container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 4rem 2rem 8rem;
+		animation: fadeIn 1.2s ease-out forwards;
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 4rem;
+	}
+
+	.page-title {
+		font-family: var(--font-heading);
+		font-size: 4rem;
+		font-weight: 500;
+		letter-spacing: -0.02em;
+		margin: 0;
+		line-height: 1;
+	}
+
+	.logo-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 140px;
+	}
+
+	.logo-svg {
+		width: 100%;
+		height: auto;
+	}
+
+	.menu-content {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	.section-note {
+		font-family: var(--font-body);
+		font-size: 0.9rem;
+		color: var(--color-text-light);
+		margin-top: 1rem;
+	}
+
+	.footer {
+		margin-top: 8rem;
+		display: flex;
+		justify-content: center;
+		opacity: 0;
+		animation: fadeIn 1.2s ease-out 0.8s forwards;
+	}
+
+	.footer-logo {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 120px;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.menu-container {
+			padding: 2rem 1.5rem 4rem;
+		}
+
+		.header {
+			margin-bottom: 3rem;
+		}
+
+		.page-title {
+			font-size: 2.5rem;
+		}
+
+		.logo-container {
+			width: 100px;
+		}
+	}
+</style>
