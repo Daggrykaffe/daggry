@@ -7,75 +7,21 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<section class="menu-section">
-	<header class="section-header">
-		<h2 class="section-title">{title}</h2>
-		{subtitle && <p class="section-subtitle">{subtitle}</p>}
+<section class="menu-section opacity-0 translate-y-5 animate-slide-up">
+	<header class="mb-8 max-sm:mb-6">
+		<h2 class="font-serif text-[2.2rem] font-bold tracking-[-0.01em] m-0 leading-[1.2] max-sm:text-[1.8rem]">{title}</h2>
+		{subtitle && <p class="font-sans text-[0.9rem] text-text-light mt-1">{subtitle}</p>}
 	</header>
 	
-	<div class="section-items">
+	<div class="flex flex-col gap-6">
 		<slot />
 	</div>
 </section>
 
 <style>
-	.menu-section {
-		opacity: 0;
-		transform: translateY(20px);
-		animation: slideUp 0.8s ease-out forwards;
-	}
-
-	/* Stagger animations for sections */
 	.menu-section:nth-child(1) { animation-delay: 0.1s; }
 	.menu-section:nth-child(2) { animation-delay: 0.2s; }
 	.menu-section:nth-child(3) { animation-delay: 0.3s; }
 	.menu-section:nth-child(4) { animation-delay: 0.4s; }
 	.menu-section:nth-child(5) { animation-delay: 0.5s; }
-
-	.section-header {
-		margin-bottom: 2rem;
-	}
-
-	.section-title {
-		font-family: var(--font-heading);
-		font-size: 2.2rem;
-		font-weight: 700;
-		letter-spacing: -0.01em;
-		margin: 0;
-		line-height: 1.2;
-	}
-
-	.section-subtitle {
-		font-family: var(--font-body);
-		font-size: 0.9rem;
-		color: var(--color-text-light);
-		margin-top: 0.25rem;
-	}
-
-	.section-items {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	@keyframes slideUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@media (max-width: 600px) {
-		.section-title {
-			font-size: 1.8rem;
-		}
-		
-		.section-header {
-			margin-bottom: 1.5rem;
-		}
-	}
 </style>

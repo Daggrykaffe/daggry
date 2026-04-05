@@ -1,168 +1,341 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Logo from '../components/Logo.astro';
-import MenuItem from '../components/MenuItem.astro';
-import MenuSection from '../components/MenuSection.astro';
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/Logo.astro";
+import MenuItem from "../components/MenuItem.astro";
+import MenuSection from "../components/MenuSection.astro";
 ---
 
 <Layout title="daggry | bageri & kaffebar i Lyngby">
-	<main class="menu-container">
-		<header class="header">
-			<h1 class="page-title">menu</h1>
-			<div class="logo-container">
-				<Logo class="logo-svg" />
-			</div>
-		</header>
+  <!-- Ambient blobs -->
+  <div
+    class="fixed rounded-full blur-[90px] -z-10 pointer-events-none animate-drift w-[700px] h-[700px] bg-sand opacity-55 -top-[250px] -left-[250px]"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="fixed rounded-full blur-[90px] -z-10 pointer-events-none animate-drift w-[550px] h-[550px] bg-sage opacity-18 bottom-[5%] -right-[180px] [animation-delay:-14s]"
+    aria-hidden="true"
+  >
+  </div>
 
-		<div class="menu-content">
-			<MenuSection title="kaffe">
-				<MenuItem name="espresso" price="28 kr" />
-				<MenuItem name="filter kaffe" price="32 kr" />
-				<MenuItem 
-					name="v60 håndbryg" 
-					description="forhør i baren for pris, bønne, løbetid og opskrift" 
-				/>
-				<MenuItem name="cortado" price="36 kr" />
-				<MenuItem name="flat white" price="42 kr" />
-				<MenuItem name="cappuccino" price="46 kr" />
-				<MenuItem name="latte" price="48 kr" />
-				<MenuItem 
-					name="iskaffe" 
-					price="48 kr" 
-					description="vælg mellem iced latte, iced americano, espresso tonic og coldbrew" 
-				/>
-			</MenuSection>
+  <!-- Grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
 
-			<MenuSection title="matcha">
-				<MenuItem 
-					name="matcha" 
-					price="48 kr" 
-					description="latte eller iced\nvarianter m. basilikum, honning og pistacie" 
-				/>
-			</MenuSection>
+  <!-- Navigation -->
+  <nav
+    class="sticky top-0 z-100 backdrop-blur-xl bg-bg/82 border-b border-black/4 animate-nav-reveal"
+  >
+    <div
+      class="max-w-[1400px] mx-auto flex justify-between items-center py-[1.4rem] px-16 max-md:px-8 max-md:relative"
+    >
+      <a
+        href="#"
+        class="w-[85px] text-text no-underline transition-opacity duration-300 hover:opacity-70"
+        aria-label="daggry – forside"
+      >
+        <Logo />
+      </a>
+      <button
+        class="nav-toggle hidden max-md:flex bg-transparent border-none cursor-pointer p-2 flex-col gap-1.5"
+        id="nav-toggle"
+        aria-label="Åbn navigation"
+        aria-expanded="false"
+      >
+        <span
+          class="block w-6 h-0.5 bg-text rounded-sm transition-transform duration-350 origin-center"
+        ></span>
+        <span
+          class="block w-6 h-0.5 bg-text rounded-sm transition-transform duration-350 origin-center"
+        ></span>
+      </button>
+      <div
+        class="nav-links flex gap-12 max-md:hidden max-md:absolute max-md:top-full max-md:inset-x-0 max-md:bg-bg/96 max-md:backdrop-blur-xl max-md:px-8 max-md:pt-6 max-md:pb-8 max-md:flex-col max-md:gap-5 max-md:border-b max-md:border-black/4"
+        id="nav-links"
+      >
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#find-os" class="nav-link">Find os</a>
+      </div>
+    </div>
+  </nav>
 
-			<MenuSection title="bagværk">
-				<MenuItem 
-					name="surdejsbolle m. krystalost og pisket smør med citronskal" 
-					price="39 kr" 
-					description="tilkøb rødt og sort peber + 3 kr" 
-				/>
-				<MenuItem name="surdejsbolle m. pisket smør med citronskal" price="28 kr" />
-				<MenuItem name="croissant" price="32 kr" />
-				<p class="section-note">for yderligere bagværk forhør i baren</p>
-			</MenuSection>
+  <!-- Hero -->
+  <section class="py-24 px-16 max-w-[1400px] mx-auto max-md:py-16 max-md:px-8">
+    <div
+      class="text-center max-w-[720px] mx-auto opacity-0 animate-hero-reveal"
+    >
+      <h1
+        class="font-serif text-[clamp(3.2rem,7vw,5.8rem)] max-md:text-[clamp(2.6rem,10vw,3.8rem)] font-light leading-[1.08] tracking-[-0.02em] mb-8"
+      >
+        Et langsomt<br />
+        <em class="italic text-sage">daggry</em><br />
+        i Lyngby
+      </h1>
+      <p
+        class="text-[1.2rem] leading-[1.65] font-light text-text-light mb-12 max-w-[460px] mx-auto"
+      >
+        Surdejsbrød, krystalost og lysristet kaffe. Vi tror på at starte dagen
+        med ro og kvalitet.
+      </p>
+      <a
+        href="#menu"
+        class="inline-block bg-text text-bg no-underline py-[1.1rem] px-[2.8rem] rounded-full font-sans text-[0.85rem] font-normal uppercase tracking-[0.08em] transition-all duration-350 hover:-translate-y-0.5 hover:bg-accent active:translate-y-0"
+        >Se vores menu</a
+      >
+    </div>
+  </section>
 
-			<MenuSection title="kolde drikkevarer" subtitle="alt juice og saft er økologisk">
-				<MenuItem name="sort citron lemonade" price="35 kr" />
-				<MenuItem name="æblemost" price="35 kr" />
-				<MenuItem name="hyldeblomst" price="35 kr" />
-				<MenuItem name="rabarberjuice" price="35 kr" />
-				<MenuItem name="rødbedejuice" price="35 kr" />
-			</MenuSection>
+  <!-- Menu -->
+  <section class="py-32 px-16 max-md:py-20 max-md:px-8" id="menu">
+    <div class="max-w-[1000px] mx-auto">
+      <h2
+        class="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-light tracking-[-0.02em] leading-[1.1] mb-16 reveal"
+      >
+        Menu
+      </h2>
 
-			<MenuSection title="te">
-				<p class="section-note">alt vores te er som udgangspunkt løst. Forhør i baren omkring udvalg</p>
-			</MenuSection>
-		</div>
-		
-		<footer class="footer">
-			<div class="footer-logo">
-				<Logo class="logo-svg" />
-			</div>
-		</footer>
-	</main>
+      <div
+        class="grid grid-cols-2 gap-x-20 gap-y-16 max-tablet:grid-cols-1 max-tablet:gap-14 reveal"
+      >
+        <div class="flex flex-col gap-14">
+          <MenuSection title="kaffe">
+            <MenuItem name="espresso" price="28 kr" />
+            <MenuItem name="filter kaffe" price="32 kr" />
+            <MenuItem
+              name="v60 håndbryg"
+              description="forhør i baren for pris, bønne, løbetid og opskrift"
+            />
+            <MenuItem name="cortado" price="36 kr" />
+            <MenuItem name="flat white" price="42 kr" />
+            <MenuItem name="cappuccino" price="46 kr" />
+            <MenuItem name="latte" price="48 kr" />
+            <MenuItem
+              name="iskaffe"
+              price="48 kr"
+              description="vælg mellem iced latte, iced americano, espresso tonic og coldbrew"
+            />
+          </MenuSection>
+
+          <MenuSection title="matcha">
+            <MenuItem
+              name="matcha"
+              price="48 kr"
+              description="latte eller iced\nvarianter m. basilikum, honning og pistacie"
+            />
+          </MenuSection>
+        </div>
+
+        <div class="flex flex-col gap-14">
+          <MenuSection title="bagværk">
+            <MenuItem
+              name="surdejsbolle m. krystalost og pisket smør med citronskal"
+              price="39 kr"
+              description="tilkøb rødt og sort peber + 3 kr"
+            />
+            <MenuItem
+              name="surdejsbolle m. pisket smør med citronskal"
+              price="28 kr"
+            />
+            <MenuItem name="croissant" price="32 kr" />
+            <p class="font-sans text-[0.9rem] text-text-light mt-4">
+              for yderligere bagværk forhør i baren
+            </p>
+          </MenuSection>
+
+          <MenuSection
+            title="kolde drikkevarer"
+            subtitle="alt juice og saft er økologisk"
+          >
+            <MenuItem name="sort citron lemonade" price="35 kr" />
+            <MenuItem name="æblemost" price="35 kr" />
+            <MenuItem name="hyldeblomst" price="35 kr" />
+            <MenuItem name="rabarberjuice" price="35 kr" />
+            <MenuItem name="rødbedejuice" price="35 kr" />
+          </MenuSection>
+
+          <MenuSection title="te">
+            <p class="font-sans text-[0.9rem] text-text-light mt-4">
+              alt vores te er som udgangspunkt løst. Forhør i baren omkring
+              udvalg
+            </p>
+          </MenuSection>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section
+    class="py-28 px-16 pb-32 bg-bg-alt max-md:py-20 max-md:px-8"
+    id="find-os"
+  >
+    <div class="max-w-[1000px] mx-auto reveal">
+      <h2
+        class="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-light tracking-[-0.02em] leading-[1.1] mb-16"
+      >
+        Find os
+      </h2>
+      <div
+        class="grid grid-cols-[1fr_1.2fr] gap-16 items-start max-tablet:grid-cols-1 max-tablet:gap-12"
+      >
+        <div class="flex flex-col gap-10">
+          <div>
+            <h4 class="font-serif text-[1.25rem] font-normal mb-[0.4rem]">
+              Adresse
+            </h4>
+            <p class="font-light text-text-light leading-relaxed">
+              Lyngby Hovedgade 66<br />2800 Kongens Lyngby
+            </p>
+          </div>
+          <div>
+            <h4 class="font-serif text-[1.25rem] font-normal mb-[0.4rem]">
+              Åbningstider
+            </h4>
+            <p class="font-light text-text-light leading-relaxed">
+              Alle dage: 06.30 – 17.00
+            </p>
+          </div>
+          <div>
+            <h4 class="font-serif text-[1.25rem] font-normal mb-[0.4rem]">
+              Kontakt
+            </h4>
+            <p class="font-light text-text-light leading-relaxed">
+              <a
+                href="tel:+4526339906"
+                class="text-accent no-underline font-normal transition-opacity duration-300 hover:opacity-70"
+                >26 33 99 06</a
+              >
+            </p>
+          </div>
+          <div>
+            <h4 class="font-serif text-[1.25rem] font-normal mb-[0.4rem]">
+              Følg os
+            </h4>
+            <p class="font-light text-text-light leading-relaxed">
+              <a
+                href="https://instagram.com/daggrykaffe"
+                class="text-accent no-underline font-normal transition-opacity duration-300 hover:opacity-70"
+                target="_blank"
+                rel="noopener">@daggrykaffe</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 px-16 border-t border-black/5 max-md:px-8">
+    <div
+      class="max-w-[1400px] mx-auto flex justify-between items-center max-md:flex-col max-md:gap-4 max-md:text-center"
+    >
+      <div class="w-[65px] text-text">
+        <Logo />
+      </div>
+      <div class="flex flex-col">
+        <p class="text-[0.78rem] uppercase tracking-[0.06em] text-text-light">
+          Lyngby Hovedgade 66
+        </p>
+        <p class="text-[0.78rem] uppercase tracking-[0.06em] text-text-light">
+          06.30 – 17.00
+        </p>
+      </div>
+    </div>
+  </footer>
 </Layout>
 
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const links = document.getElementById("nav-links");
+
+  toggle?.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    links?.classList.toggle("open");
+  });
+
+  links?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      toggle?.setAttribute("aria-expanded", "false");
+      links?.classList.remove("open");
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+</script>
+
 <style>
-	.menu-container {
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 4rem 2rem 8rem;
-		animation: fadeIn 1.2s ease-out forwards;
-	}
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
 
-	.header {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		margin-bottom: 4rem;
-	}
+  .nav-link {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s;
+  }
 
-	.page-title {
-		font-family: var(--font-heading);
-		font-size: 4rem;
-		font-weight: 500;
-		letter-spacing: -0.02em;
-		margin: 0;
-		line-height: 1;
-	}
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transition: width 0.35s ease;
+  }
 
-	.logo-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 140px;
-	}
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
 
-	.logo-svg {
-		width: 100%;
-		height: auto;
-	}
+  .nav-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
 
-	.menu-content {
-		display: flex;
-		flex-direction: column;
-		gap: 3.5rem;
-	}
+  .nav-links.open {
+    display: flex !important;
+  }
 
-	.section-note {
-		font-family: var(--font-body);
-		font-size: 0.9rem;
-		color: var(--color-text-light);
-		margin-top: 1rem;
-	}
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.85s ease-out,
+      transform 0.85s ease-out;
+  }
 
-	.footer {
-		margin-top: 8rem;
-		display: flex;
-		justify-content: center;
-		opacity: 0;
-		animation: fadeIn 1.2s ease-out 0.8s forwards;
-	}
-
-	.footer-logo {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 120px;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@media (max-width: 600px) {
-		.menu-container {
-			padding: 2rem 1.5rem 4rem;
-		}
-
-		.header {
-			margin-bottom: 3rem;
-		}
-
-		.page-title {
-			font-size: 2.5rem;
-		}
-
-		.logo-container {
-			width: 100px;
-		}
-	}
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>

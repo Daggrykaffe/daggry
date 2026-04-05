@@ -1,86 +1,39 @@
 ---
 interface Props {
-	name: string;
-	price?: string;
-	description?: string;
+  name: string;
+  price?: string;
+  description?: string;
 }
 
 const { name, price, description } = Astro.props;
-
-// Convert literal \n to actual breaks if passed as string
-const descLines = description ? description.split('\\n') : [];
+const descLines = description ? description.split("\\n") : [];
 ---
 
-<article class="menu-item">
-	<div class="item-header">
-		<h3 class="item-name">{name}</h3>
-		{price && <span class="item-price">{price}</span>}
-	</div>
-	
-	{description && (
-		<div class="item-description">
-			{descLines.map(line => (
-				<p>{line}</p>
-			))}
-		</div>
-	)}
+<article
+  class="flex flex-col gap-1 relative transition-transform duration-200 hover:translate-x-1"
+>
+  <div class="flex justify-between items-baseline gap-4">
+    <h3
+      class="font-sans text-[1.1rem] font-medium m-0 leading-[1.4] max-sm:text-[1rem]"
+    >
+      {name}
+    </h3>
+    {
+      price && (
+        <span class="font-sans text-[1.1rem] font-normal whitespace-nowrap max-sm:text-[1rem]">
+          {price}
+        </span>
+      )
+    }
+  </div>
+
+  {
+    description && (
+      <div class="font-sans text-[0.9rem] text-text-light leading-[1.4] max-w-[85%] max-sm:text-[0.85rem] max-sm:max-w-[90%]">
+        {descLines.map((line) => (
+          <p class="m-0">{line}</p>
+        ))}
+      </div>
+    )
+  }
 </article>
-
-<style>
-	.menu-item {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-		position: relative;
-		transition: transform 0.2s ease;
-	}
-
-	.menu-item:hover {
-		transform: translateX(4px);
-	}
-
-	.item-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-		gap: 1rem;
-	}
-
-	.item-name {
-		font-family: var(--font-body);
-		font-size: 1.1rem;
-		font-weight: 500;
-		margin: 0;
-		line-height: 1.4;
-	}
-
-	.item-price {
-		font-family: var(--font-body);
-		font-size: 1.1rem;
-		font-weight: 400;
-		white-space: nowrap;
-	}
-
-	.item-description {
-		font-family: var(--font-body);
-		font-size: 0.9rem;
-		color: var(--color-text-light);
-		line-height: 1.4;
-		max-width: 85%;
-	}
-
-	.item-description p {
-		margin: 0;
-	}
-
-	@media (max-width: 600px) {
-		.item-name, .item-price {
-			font-size: 1rem;
-		}
-
-		.item-description {
-			font-size: 0.85rem;
-			max-width: 90%;
-		}
-	}
-</style>

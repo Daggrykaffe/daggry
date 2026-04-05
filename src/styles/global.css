@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+	--color-bg: #F4F1EB;
+	--color-bg-alt: #ECE8DF;
+	--color-text: #2C3531;
+	--color-text-light: #5A6053;
+	--color-accent: #C2A878;
+	--color-sage: #A3B1A6;
+	--color-sand: #E6E2D6;
+	--color-warm: #D4C5A9;
+
+	--font-sans: 'Outfit', sans-serif;
+	--font-serif: 'Fraunces', serif;
+	--font-mono: 'Cutive Mono', monospace;
+
+	--animate-drift: drift 28s ease-in-out infinite alternate;
+	--animate-nav-reveal: navReveal 1s ease-out;
+	--animate-hero-reveal: heroReveal 1.2s ease-out 0.3s forwards;
+	--animate-slide-up: slideUp 0.8s ease-out forwards;
+
+	--breakpoint-tablet: 900px;
+}
+
+@keyframes drift {
+	0%   { transform: translate(0, 0) scale(1); }
+	50%  { transform: translate(50px, 90px) scale(1.06); }
+	100% { transform: translate(-30px, 50px) scale(0.94); }
+}
+
+@keyframes navReveal {
+	from { opacity: 0; transform: translateY(-12px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroReveal {
+	from { opacity: 0; transform: translateY(20px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+	from { opacity: 0; transform: translateY(20px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@layer base {
+	html {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		scroll-behavior: smooth;
+	}
+
+	::selection {
+		background-color: var(--color-accent);
+		color: var(--color-bg);
+	}
+
+	[id] {
+		scroll-margin-top: 5.5rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*, *::before, *::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+		html { scroll-behavior: auto; }
+	}
+}
